@@ -1,0 +1,27 @@
+import unittest  # Python's 'unittest' framework recognizes a script as a test script based on certain conventions.
+
+# By default, unittest looks for files that start with test_ or end with _test.py.
+
+# Function to test
+def multiply(a, b):
+    return a * b
+
+# Test classes should inherit from unittest.TestCase. This tells the framework that the class contains test methods.
+
+class TestMultiplyFunction(unittest.TestCase):  #Test methods inside the test class should start with the word test_. 
+                                                #This is how unittest identifies which methods are tests.
+    def test_multiply_positive_numbers(self):    
+        self.assertEqual(multiply(2, 3), 6)  # Expected output: 6
+        self.assertEqual(multiply(5, 5), 25) # Expected output: 25
+
+    def test_multiply_negative_numbers(self):
+        self.assertEqual(multiply(-2, 3), -6)  # Expected output: -6
+        self.assertEqual(multiply(-4, -4), 16) # Expected output: 16
+
+    def test_multiply_with_zero(self):
+        self.assertEqual(multiply(0, 5), 0)    # Expected output: 0
+        self.assertEqual(multiply(3, 0), 0)    # Expected output: 0
+
+if __name__ == "__main__":       # this block calls unittest.main() 
+    unittest.main()              # this will Find all the test cases in the file and runs them automatically & 
+                                 # Reports the results to the console.
